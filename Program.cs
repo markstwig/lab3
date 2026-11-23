@@ -29,9 +29,9 @@ do
             {
                 Console.WriteLine("- В массиве нет элементов, равных нулю");
             }
-            TransformArray(array);
+            double[] transformed = TransformArray(array);
             Console.Write("Массив после преобразования: ");
-            PrintArray(array);
+            PrintArray(transformed);
             break;
         case "2":
             Console.Write("Введите количество строк: ");
@@ -77,7 +77,7 @@ double[] GenerateArray(int n)
     Console.WriteLine("Выберите, над каким массивом работать: ");
     Console.WriteLine("1. Случайно сгенерированный");
     Console.WriteLine("2. Введённый пользователем");
-    Console.WriteLine("Ваш выбор: ");
+    Console.Write("Ваш выбор: ");
     string selection = Console.ReadLine();
     switch (selection)
     {
@@ -110,7 +110,7 @@ double[,] GenerateMatrix(int n, int m)
     Console.WriteLine("Выберите, над какой матрицей работать: ");
     Console.WriteLine("1. Случайно сгенерированная");
     Console.WriteLine("2. Введённая пользователем");
-    Console.WriteLine("Ваш выбор: ");
+    Console.Write("Ваш выбор: ");
     string selection = Console.ReadLine();
     switch (selection)
     {
@@ -176,10 +176,10 @@ double FindSumAfterElement(double[] array, int element)
     return sum;
 }
 
-void TransformArray(double[] array)
+double[] TransformArray(double[] array)
 {
     double[] result = new double[array.Length];
-    int ind = 0;
+    int ind = 0; 
     for (var i = 0; i < array.Length; i++)
     {
         if (Math.Truncate(array[i]) <= 1)
@@ -196,10 +196,7 @@ void TransformArray(double[] array)
             ind++;
         }
     }
-    for (var i = 0; i < array.Length; i++)
-    {
-        array[i] = result[i];
-    }
+    return result;
 }
 
 void TransformMatrix(double[,] matrix)
